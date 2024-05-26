@@ -1,0 +1,84 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\jared\\Desktop\\RDriver\\RDriver\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{E6A69EFA-3A4E-4B84-A018-E8034E50A5AF}|UM\\UM.vcxproj|C:\\Users\\jared\\Desktop\\RDriver\\RDriver\\UM\\src\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{E6A69EFA-3A4E-4B84-A018-E8034E50A5AF}|UM\\UM.vcxproj|solutionrelative:UM\\src\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E6A69EFA-3A4E-4B84-A018-E8034E50A5AF}|UM\\UM.vcxproj|C:\\Users\\jared\\Desktop\\RDriver\\RDriver\\UM\\src\\offsets.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{E6A69EFA-3A4E-4B84-A018-E8034E50A5AF}|UM\\UM.vcxproj|solutionrelative:UM\\src\\offsets.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E6A69EFA-3A4E-4B84-A018-E8034E50A5AF}|UM\\UM.vcxproj|C:\\Users\\jared\\Desktop\\RDriver\\RDriver\\UM\\src\\buttons.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{E6A69EFA-3A4E-4B84-A018-E8034E50A5AF}|UM\\UM.vcxproj|solutionrelative:UM\\src\\buttons.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{59072A72-32B5-4685-A969-112C894F4B42}|KM\\KM.vcxproj|C:\\Users\\jared\\Desktop\\RDriver\\RDriver\\KM\\src\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{59072A72-32B5-4685-A969-112C894F4B42}|KM\\KM.vcxproj|solutionrelative:KM\\src\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "buttons.hpp",
+              "DocumentMoniker": "C:\\Users\\jared\\Desktop\\RDriver\\RDriver\\UM\\src\\buttons.hpp",
+              "RelativeDocumentMoniker": "UM\\src\\buttons.hpp",
+              "ToolTip": "C:\\Users\\jared\\Desktop\\RDriver\\RDriver\\UM\\src\\buttons.hpp",
+              "RelativeToolTip": "UM\\src\\buttons.hpp",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-05-26T00:03:24.16Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "offsets.hpp",
+              "DocumentMoniker": "C:\\Users\\jared\\Desktop\\RDriver\\RDriver\\UM\\src\\offsets.hpp",
+              "RelativeDocumentMoniker": "UM\\src\\offsets.hpp",
+              "ToolTip": "C:\\Users\\jared\\Desktop\\RDriver\\RDriver\\UM\\src\\offsets.hpp",
+              "RelativeToolTip": "UM\\src\\offsets.hpp",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-05-25T21:34:43.058Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "main.cpp",
+              "DocumentMoniker": "C:\\Users\\jared\\Desktop\\RDriver\\RDriver\\UM\\src\\main.cpp",
+              "RelativeDocumentMoniker": "UM\\src\\main.cpp",
+              "ToolTip": "C:\\Users\\jared\\Desktop\\RDriver\\RDriver\\UM\\src\\main.cpp",
+              "RelativeToolTip": "UM\\src\\main.cpp",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-05-25T19:12:16.232Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "main.cpp",
+              "DocumentMoniker": "C:\\Users\\jared\\Desktop\\RDriver\\RDriver\\KM\\src\\main.cpp",
+              "RelativeDocumentMoniker": "KM\\src\\main.cpp",
+              "ToolTip": "C:\\Users\\jared\\Desktop\\RDriver\\RDriver\\KM\\src\\main.cpp",
+              "RelativeToolTip": "KM\\src\\main.cpp",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-05-25T19:23:52.737Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

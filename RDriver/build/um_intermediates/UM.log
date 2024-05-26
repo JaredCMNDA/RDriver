@@ -1,0 +1,3 @@
+﻿  main.cpp
+C:\Users\jared\Desktop\RDriver\RDriver\UM\src\main.cpp(94,20): warning C4312: 'reinterpret_cast': conversion from 'const DWORD' to 'HANDLE' of greater size
+  UM.vcxproj -> C:\Users\jared\Desktop\RDriver\RDriver\build\UM.exe
