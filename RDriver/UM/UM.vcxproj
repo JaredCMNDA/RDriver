@@ -142,10 +142,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\memory.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\buttons.hpp" />
     <ClInclude Include="src\client.dll.hpp" />
+    <ClInclude Include="src\memory.h" />
     <ClInclude Include="src\offsets.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
