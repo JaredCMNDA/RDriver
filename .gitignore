@@ -1,2 +1,2 @@
-RDriver\build\*
-RDriver\.vs\*
+/RDriver/Build/*
+/RDriver/.vs/*
