@@ -1,77 +1,111 @@
+
+#include <GL/glew.h>
+#include "imgui/imgui.h"
+#include "imgui/imgui_impl_glfw.h"
+#include "imgui/imgui_impl_opengl3.h"
+#include <stdio.h>
+#include <GLFW/glfw3.h> // Will drag system OpenGL headers
+
 #include <iostream>
-#include <Windows.h>
-#include <TlHelp32.h>
 
-#include "client.dll.hpp"
-#include "buttons.hpp"
-#include "offsets.hpp"
-#include "memory.h"
+static void glfw_error_callback(int error, const char* description)
+{
+    fprintf(stderr, "GLFW Error %d: %s\n", error, description);
+}
 
-using namespace cs2_dumper::offsets;
-using namespace cs2_dumper::schemas;
-using namespace cs2_dumper;
+// Main code
+int main(int, char**)
+{
+    glfwSetErrorCallback(glfw_error_callback);
+    if (!glfwInit())
+        return 1;
 
-using namespace memory;
+    const char* glsl_version = "#version 130";
 
-int main() {
 
-	const DWORD pid = get_process_id(L"cs2.exe");// L in front of string means it's a wide string
+	// Get the primary monitor's resolution
+	GLFWmonitor* monitor = glfwGetPrimaryMonitor();
+    if (!monitor) {
+		std::cout << "[-] Failed to get primary monitor" << std::endl;
+        return 1;
+    }
 
-	if (pid == 0) {
-		std::cout << "[-] Failed to get process id." << std::endl;
-		std::cin.get(); // Pause
+	int width = glfwGetVideoMode(monitor)->width;
+	int height = glfwGetVideoMode(monitor)->height;
+
+    glfwWindowHint(GLFW_FLOATING, true);
+    glfwWindowHint(GLFW_RESIZABLE, false);
+    glfwWindowHint(GLFW_MAXIMIZED, true);
+    glfwWindowHint(GLFW_TRANSPARENT_FRAMEBUFFER, true);
+
+    // Create window with graphics context
+    GLFWwindow* window = glfwCreateWindow(width, height, "IMGUI", nullptr, nullptr);
+    if (window == nullptr) {
+        return 1;
+    }
+
+	glfwSetWindowAttrib(window, GLFW_DECORATED, false);
+
+    glfwMakeContextCurrent(window);
+    glfwSwapInterval(1); // Enable vsync
+
+	if (glewInit() != GLEW_OK) {
+		fprintf(stderr, "Failed to initialize OpenGL loader!\n");
 		return 1;
 	}
 
-	const HANDLE driver = CreateFile(L"\\\\.\\RDriver", GENERIC_READ, 0, nullptr, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, nullptr);
+    // Setup Dear ImGui context
+    IMGUI_CHECKVERSION();
+    ImGui::CreateContext();
+    ImGuiIO& io = ImGui::GetIO(); (void)io;
+    io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;     // Enable Keyboard Controls
+    io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;      // Enable Gamepad Controls
 
-	if (driver == INVALID_HANDLE_VALUE) {
-		std::cout << "[-] Failed to get driver handle." << std::endl;
-		std::cin.get(); // Pause
-		return 1;
-	}
+    // Setup Dear ImGui style
+    ImGui::StyleColorsDark();
 
-	if (driver::attach_to_process(driver, pid) == true) {
-		std::cout << "[+] Successfully attached to process." << std::endl;
-
-		if (const std::uintptr_t client = get_module_base(pid, L"client.dll"); client != 0) {
-			std::cout << "[+] Found client.dll base address." << std::endl;
-
-			while (true) {
-				if (GetAsyncKeyState(VK_END)) {
-					break;
-				}
+    // Setup Platform/Renderer backends
+    ImGui_ImplGlfw_InitForOpenGL(window, true);
+    ImGui_ImplOpenGL3_Init(glsl_version);
 
 
-				const auto local_player_pawn = driver::read_memory<std::uintptr_t>(driver, client + client_dlloffset::dwLocalPlayerPawn);
 
-				if (local_player_pawn == 0) {
-					continue; // Keep trying
-				}
+    // Our state
+    bool show_demo_window = true;
+    bool show_another_window = false;
 
-				const auto flags = driver::read_memory<std::uint32_t>(driver, local_player_pawn + client_dll::C_BaseEntity::m_fFlags);
+    while (!glfwWindowShouldClose(window))
+    {
 
-				const bool in_air = flags & (1 << 0); // 1 << 0 is the first bit in the flags
-				const bool space_pressed = GetAsyncKeyState(VK_SPACE);
-				const auto force_jump = driver::read_memory<DWORD>(driver, client + 181806780);
+        glfwPollEvents();
 
-				if (space_pressed && in_air) {
-					Sleep(5);
-					driver::write_memory(driver, client + 181806780, 65537);
-				}
-				else if (space_pressed && !in_air) {
-					driver::write_memory(driver, client + 181806780, 256);
-				}
-				else if (!space_pressed && force_jump == 65537) {
-					driver::write_memory(driver, client + 181806780, 256);
-				}
-			}
-		}
-	}
+        // Start the Dear ImGui frame
+        ImGui_ImplOpenGL3_NewFrame();
+        ImGui_ImplGlfw_NewFrame();
+        ImGui::NewFrame();
 
+        // draw here 
+        
+        ImGui::Button("Test button");
 
-	CloseHandle(driver);
+        // Rendering
+        ImGui::Render();
+        int display_w, display_h;
+        glfwGetFramebufferSize(window, &display_w, &display_h);
+        glViewport(0, 0, display_w, display_h);
+        glClear(GL_COLOR_BUFFER_BIT);
+        ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
-	std::cin.get();	// Pause
-	return 0;
+        glfwSwapBuffers(window);
+    }
+
+    // Cleanup
+    ImGui_ImplOpenGL3_Shutdown();
+    ImGui_ImplGlfw_Shutdown();
+    ImGui::DestroyContext();
+
+    glfwDestroyWindow(window);
+    glfwTerminate();
+
+    return 0;
 }
