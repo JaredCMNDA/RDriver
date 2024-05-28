@@ -42,15 +42,18 @@
     <ClCompile Include="include\imgui\imgui_widgets.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\controlMenu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\client.dll.hpp">
+    <ClInclude Include="offsets\client.dll.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\offsets.hpp">
+    <ClInclude Include="offsets\offsets.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\buttons.hpp">
+    <ClInclude Include="offsets\buttons.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\memory.h">
@@ -99,6 +102,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\imgui\imstb_truetype.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\controlMenu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="math\worldToScreen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="math\convertToRange.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="math\dataTypes.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

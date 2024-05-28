@@ -15,33 +15,8 @@ using namespace memory;
 
 int main() {
 
-	const DWORD pid = get_process_id(L"cs2.exe");// L in front of string means it's a wide string
-	if (pid == 0) {
-		std::cout << "[-] Failed to get process id." << std::endl;
-		std::cin.get(); // Pause
-		return 1;
-	}
-
-	const HANDLE driver = CreateFile(L"\\\\.\\RDriver", GENERIC_READ, 0, nullptr, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, nullptr);
-	if (driver == INVALID_HANDLE_VALUE) {
-		std::cout << "[-] Failed to get driver handle." << std::endl;
-		std::cin.get(); // Pause
-		return 1;
-	}
-
-	if (driver::attach_to_process(driver, pid) == true) {
-		std::cout << "[+] Successfully attached to process." << std::endl;
-
-		if (const std::uintptr_t client = get_module_base(pid, L"client.dll"); client != 0) {
-			std::cout << "[+] Found client.dll base address." << std::endl;
-
-			while (true) {
-				if (GetAsyncKeyState(VK_END)) {
-					break;
-				}
 
 
-				const auto local_player_pawn = driver::read_memory<std::uintptr_t>(driver, client + client_dlloffset::dwLocalPlayerPawn);
 
 				if (local_player_pawn == 0) {
 					continue; // Keep trying
